@@ -1,2 +1,3 @@
 # DynArray
-Library with dynamic integer array for c language
+
+A simple library which adds support for dynamic integer arrays
