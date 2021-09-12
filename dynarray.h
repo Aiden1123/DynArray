@@ -1,6 +1,5 @@
 #ifndef DYNARRAY
 #define DYNARRAY
-#endif
 
 typedef struct array_info {                      //structure containing dynamic array
     int size;
@@ -46,4 +45,5 @@ void delete_value(dyn_array *array, int num);       //function that deletes firs
 
 void delete_all_value(dyn_array *array, int num);       //function that deletes all appearances of num in array
 
-int get_array_size(dyn_array *array);       //function that returns number of elements in array                                                   
+int get_array_size(dyn_array *array);       //function that returns number of elements in array
+#endif
