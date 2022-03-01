@@ -6,7 +6,7 @@ dyn_array *new_array() {                        //function that creates new arra
     dyn_array* temp=malloc(sizeof(dyn_array));  //memory allocation for structure
 
     if(temp==NULL) {                            //handle mem errors
-        printf("ERROR: cannot allocate memory");
+        printf("ERROR: cannot allocate memory\n");
         return NULL;
     }
 
@@ -23,7 +23,7 @@ void add(dyn_array *array,int num) {            //function that adds int to the 
         array->data=malloc(sizeof(int));        //memory allocation for array
         
         if(array->data==NULL) {                 //handle mem errors
-            printf("ERROR: cannot allocate memory");
+            printf("ERROR: cannot allocate memory\n");
             return;
         }
 
@@ -38,7 +38,7 @@ void add(dyn_array *array,int num) {            //function that adds int to the 
     aux=realloc(array->data,array->size*sizeof(int));   //reallocate mem fo rarray
 
     if(aux==NULL) {                             //handle mem errors
-        printf("ERROR: cannot allocate memory");
+        printf("ERROR: cannot allocate memory\n");
         return;
     }
 
@@ -47,13 +47,23 @@ void add(dyn_array *array,int num) {            //function that adds int to the 
     return;
 }
 
+void array_update_value(dyn_array *array, int index,int new_value) {
+    
+    if (array->size <= index || index < 0) {
+        printf("ERROR: index out of bounds\n");
+        return;
+    }
+
+    array->data[index] = new_value;
+    return;
+}
 
 dyn_array *copy_array(dyn_array *array) {           //function that creates a copy of an array
                                                     //new array doesn't refernece the old one
     dyn_array* temp=malloc(sizeof(dyn_array));      //allocate memory for structure
 
     if(temp==NULL) {                                //handle mem errors
-        printf("ERROR: cannot allocate memory");
+        printf("ERROR: cannot allocate memory\n");
         return NULL;
     }
 
@@ -64,7 +74,7 @@ dyn_array *copy_array(dyn_array *array) {           //function that creates a co
         temp->data=malloc(array->size*sizeof(int));     //allocate memory for array
         
         if(temp->data==NULL) {                          //handle mem errors
-            printf("ERROR: cannot allocate memory");
+            printf("ERROR: cannot allocate memory\n");
             return NULL;
         }
         
@@ -102,7 +112,7 @@ void array_extend(dyn_array *dest, dyn_array *src) {    //function concatenates 
         aux = realloc(dest->data, sizeof(int)*(dest->size+src->size));  //reallocate memory
         
         if(aux==NULL) {                                                 //handle mem errors
-            printf("ERROR: cannot allocate memory");
+            printf("ERROR: cannot allocate memory\n");
             return;
         }
 
@@ -149,7 +159,7 @@ void array_insert(dyn_array *array, int index, int num) {   //function that inse
         aux = realloc(array->data, sizeof(int)*array->size);    //reallocate memory
         
         if(aux==NULL) {                                         //handle mem errors
-            printf("ERROR: cannot allocate memory");
+            printf("ERROR: cannot allocate memory\n");
             return;
         }
 
@@ -245,7 +255,7 @@ void delete_index(dyn_array *array, int index) {        //function that deletes 
         aux=realloc(array->data,array->size*sizeof(int));       //reallocate memory
 
         if(aux==NULL) {                                         //handle mem errors
-            printf("ERROR: cannot allocate memory");
+            printf("ERROR: cannot allocate memory\n");
             return;
         }
 
@@ -263,7 +273,7 @@ void delete_index(dyn_array *array, int index) {        //function that deletes 
     aux=realloc(array->data,array->size*sizeof(int));       //reallocate memory
 
     if(aux==NULL) {                                         //handle mem errors
-        printf("ERROR: cannot allocate memory");
+        printf("ERROR: cannot allocate memory\n");
         return;
     }
 
@@ -284,7 +294,7 @@ int array_pop_last(dyn_array *array) {      //function that deletes last element
     aux=realloc(array->data,array->size*sizeof(int));       //reallocate memory
 
     if(aux==NULL) {                                         //handle mem errors
-        printf("ERROR: cannot allocate memory");
+        printf("ERROR: cannot allocate memory\n");
         return temp;
     }
 

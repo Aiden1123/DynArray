@@ -10,6 +10,8 @@ dyn_array *new_array();                         //function that creates new arra
 
 void add(dyn_array *array,int num);            //function that adds int to the end of dynamic array
 
+void array_update_value(dyn_array *array, int index,int new_value);     //sets element with given index to value
+
 dyn_array *copy_array(dyn_array *array);            //function that creates a copy of an array
                                                     //new array doesn't refernece the old one
 
